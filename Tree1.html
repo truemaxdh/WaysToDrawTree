@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script>
+      var ctx;
+      function drawLine(cx, cy, rad, len, depth) {
+        var toX = cx + Math.cos(rad) * len;
+        var toY = cy + Math.sin(rad) * len;
+        //alert(toX + "," + toY+ "," + depth);
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(toX, toY);
+        ctx.lineWidth = 24 - 3 * depth;
+        ctx.stroke();
+        var depth1 = depth+1;
+        if (depth < 7) {
+          var rad1 = rad - Math.PI * 20 / 180;
+          drawLine(toX, toY, rad1, len * 0.9, depth1);
+          var rad2 = rad + Math.PI * 20 / 180;
+          drawLine(toX, toY, rad2, len * 0.9, depth1);
+        }
+      }
+      
+      window.onload = function () {
+        var c = document.getElementById("cnv");
+        ctx = c.getContext("2d");
+        var cx0 = 400, cy0 = 600, rad0 = Math.PI * 270 / 180;
+        var len0 = 100;
+        var depth0 = 0;
+
+
+        drawLine(cx0, cy0, rad0, len0, depth0);
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Tree -->
+    <div>
+      <canvas id="cnv" width="800" height="600" style="border:1px solid black;">CANVAS NOT SUPPORTED</canvas>
+    </div>
+  </body>
+</html>
