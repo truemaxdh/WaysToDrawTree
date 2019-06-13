@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <script>
+      var ctx;
+      var tm = 120;
+      
+      function drawLeaf(cx, cy, rad, len, depth) {
+        var toX = cx + Math.cos(rad) * len;
+        var toY = cy + Math.sin(rad) * len;
+        if (depth > 3) {
+          ctx.beginPath();
+          ctx.arc(toX, toY, 35 - 2.5 * depth, 0, 2 * Math.PI);
+          ctx.strokeStyle="#000";
+          ctx.lineWidth=2;
+          ctx.fillStyle="#0a0";
+          ctx.stroke();
+          ctx.fill();
+        }
+        var depth1 = depth+1;
+        if (depth < 7) {
+          var rad1 = rad - Math.PI * 20 / 180;
+          //drawLine(toX, toY, rad1, len * 0.9, depth1);
+          var tmr = setTimeout(function() {drawLeaf(toX, toY, rad1, len * 0.9, depth1)}, tm);
+          //tm += 50;
+          
+          var rad2 = rad + Math.PI * 20 / 180;
+          //drawLine(toX, toY, rad2, len * 0.9, depth1);
+          tmr = setTimeout(function() {drawLeaf(toX, toY, rad2, len * 0.9, depth1)}, tm);
+          //tm += 50;
+        }
+      }
+      
+      function drawLine(cx, cy, rad, len, depth) {
+        var fromDepth = 55 - 8 * (depth - 1);
+        var toDepth = 55 - 8 * depth;
+        var dDepth = (toDepth - fromDepth) / len;
+        for (var _len = 0; _len <= len; _len++) {
+          var toX = cx + Math.cos(rad) * _len;
+          var toY = cy + Math.sin(rad) * _len;
+          var width = fromDepth + dDepth * _len;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(toX, toY);
+          ctx.lineWidth = width;
+          ctx.strokeStyle="#830";
+          ctx.stroke();  
+        }
+        
+        
+        var depth1 = depth+1;
+        if (depth < 7) {
+          var rad1 = rad - Math.PI * 20 / 180;
+          //drawLine(toX, toY, rad1, len * 0.9, depth1);
+          var tmr = setTimeout(function() {drawLine(toX, toY, rad1, len * 0.9, depth1)}, tm);
+          //tm += 50;
+          
+          var rad2 = rad + Math.PI * 20 / 180;
+          //drawLine(toX, toY, rad2, len * 0.9, depth1);
+          tmr = setTimeout(function() {drawLine(toX, toY, rad2, len * 0.9, depth1)}, tm);
+          //tm += 50;
+        }
+      }
+      
+      window.onload = function () {
+        var c = document.getElementById("cnv");
+        ctx = c.getContext("2d");
+        var cx0 = 400, cy0 = 600, rad0 = Math.PI * 270 / 180;
+        var len0 = 100;
+        var depth0 = 0;
+
+
+        drawLine(cx0, cy0, rad0, len0, depth0);
+        setTimeout(function() {drawLeaf(cx0, cy0, rad0, len0, depth0)}, 1000);
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Tree -->
+    <div>
+      <canvas id="cnv" width="800" height="600" style="border:1px solid black;">CANVAS NOT SUPPORTED</canvas>
+    </div>
+  </body>
+</html>
