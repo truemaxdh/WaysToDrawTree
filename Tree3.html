@@ -19,14 +19,14 @@
         if (depth > 3) {
           var toX = cx + Math.cos(rad) * len;
           var toY = cy + Math.sin(rad) * len;
-          var r = Math.random() * 15 + 5;
+          var r = Math.random() * 20 + 5;
           var c0 = parseInt(Math.random() * 7);
           var c1 = parseInt(Math.random() * 7 + 9);
           var c2 = parseInt(Math.random() * 7);
-          console.log("#" + c0.toString(16) + c1.toString(16) + c2.toString(16));
+          //console.log("#" + c0.toString(16) + c1.toString(16) + c2.toString(16));
           ctx.beginPath();
           ctx.arc(toX, toY, r, 0, 2 * Math.PI);
-          ctx.strokeStyle="#000";
+          ctx.strokeStyle="#aaa";
           ctx.lineWidth=2;
           ctx.fillStyle="#" + c0.toString(16) + c1.toString(16) + c2.toString(16);
           ctx.stroke();
