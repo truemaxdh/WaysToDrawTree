@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <!-- Google Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- AutoResponse -->
+    <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7307479428475282"
+     data-ad-slot="8718898251"
+     data-ad-format="auto"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>    
+    <script>
+      var ctx;
+      var tm = 120;
+      var goldenRatio = 1 / 1.618;
+      function drawLeaf(cx, cy, rad, len, depth) {
+        if (depth > 3) {
+          var toX = cx + Math.cos(rad) * len;
+          var toY = cy + Math.sin(rad) * len;
+          var r = Math.random() * 20 + 5;
+          var c0 = parseInt(Math.random() * 7);
+          var c1 = parseInt(Math.random() * 7 + 9);
+          var c2 = parseInt(Math.random() * 7);
+          //console.log("#" + c0.toString(16) + c1.toString(16) + c2.toString(16));
+          ctx.beginPath();
+          ctx.arc(toX, toY, r, 0, 2 * Math.PI);
+          ctx.strokeStyle="#aaa";
+          ctx.lineWidth=2;
+          ctx.fillStyle="#" + c0.toString(16) + c1.toString(16) + c2.toString(16);
+          ctx.stroke();
+          ctx.fill();
+        }
+      }
+      
+      function drawLine(cx, cy, rad, len, depth) {
+        //alert(len);
+        var fromDepth = 40 - 7 * (depth - 1);
+        var toDepth = 40 - 7 * depth;
+        var dDepth = (toDepth - fromDepth) / len;
+        for (var _len = 0; _len <= len; _len++) {
+          var toX = cx + Math.cos(rad) * _len;
+          var toY = cy + Math.sin(rad) * _len;
+          var width = fromDepth + dDepth * _len;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(toX, toY);
+          ctx.lineWidth = width;
+          ctx.strokeStyle="#731100";
+          ctx.stroke();  
+        }
+        
+        
+        var depth1 = depth+1;
+        if (depth < 6) {
+          var rnd = Math.floor(Math.random() * 2);
+          var len1 = len * ((rnd == 0) ? goldenRatio : 1);
+          var len2 = len * ((rnd == 0) ? 1 : goldenRatio);
+          var rad1 = rad - Math.PI * 20 / 180;
+          var tmr = setTimeout(function() {drawLine(toX, toY, rad1, len1, depth1)}, tm);
+          
+          var rad2 = rad + Math.PI * 20 / 180;
+          tmr = setTimeout(function() {drawLine(toX, toY, rad2, len2, depth1)}, tm);
+        } else {
+          drawLeaf(cx, cy, rad, len, depth);
+        }
+      }
+      
+      window.onload = function () {
+        var c = document.getElementById("cnv");
+        ctx = c.getContext("2d");
+        var cx0 = 400, cy0 = 600, rad0 = Math.PI * 270 / 180;
+        var len0 = 90;
+        var depth0 = 0;
+        drawLine(cx0, cy0, rad0, len0, depth0);
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Tree -->
+    <div>
+      <canvas id="cnv" width="800" height="600" style="border:1px solid black;">CANVAS NOT SUPPORTED</canvas>
+    </div>
+  </body>
+</html>
