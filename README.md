@@ -5,6 +5,7 @@ Demonstration of various ways to draw tree in HTML5
 [Tree1](Tree1.html)
 [Tree2](Tree2.html)
 [Tree3](Tree3.html)
+[Tree4](Tree4.html)
 
 <!-- Google Adsense -->
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
