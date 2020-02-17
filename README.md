@@ -8,7 +8,7 @@
  gtag('config', 'UA-81183833-2');
 </script>
 
-<script>var cookieBread = ">Game>WaysToDrawTree";</script>
+<script>var cookieBread = ">Arts>WaysToDrawTree";</script>
 <script src="https://truemaxdh.github.io/Include/header.js"></script>
 
 # WaysToDrawTree
