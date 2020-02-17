@@ -8,7 +8,7 @@
  gtag('config', 'UA-81183833-2');
 </script>
 
-<script>var cookieBread = ">Game>2048-AI";</script>
+<script>var cookieBread = ">Game>WaysToDrawTree";</script>
 <script src="https://truemaxdh.github.io/Include/header.js"></script>
 
 # WaysToDrawTree
