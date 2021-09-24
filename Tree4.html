@@ -23,7 +23,7 @@
       var tm = 120;
       var goldenRatio = 1 / 1.618;
       function drawLeaf(cx, cy, rad, len, depth) {
-        if (depth > 3) {
+        //if (depth > 3) {
           var toX = cx + Math.cos(rad) * len;
           var toY = cy + Math.sin(rad) * len;
           var r = Math.random() * 20 + 5;
@@ -38,7 +38,7 @@
           ctx.fillStyle="#" + c0.toString(16) + c1.toString(16) + c2.toString(16);
           ctx.stroke();
           ctx.fill();
-        }
+        //}
       }
       
       function drawLine(cx, cy, rad, len, depth) {
